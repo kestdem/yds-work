@@ -7,97 +7,62 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div class="container">
-    <div class="header">
-        <h2>YDS Platformu</h2>
-        <button class="theme-toggle" onclick="toggleTheme()">Koyu Tema Yap</button>
-    </div>
-<div class="container">
-    <div class="header">
-        <h2>YDS Platformu</h2>
-        <button class="theme-toggle" onclick="toggleTheme()">Koyu Tema Yap</button>
-    </div>
-
-    <div id="authScreen" class="auth-area">
-        <h3 style="text-align: center;">Sisteme Giriş</h3>
-        <p style="text-align: center; color: gray;">Lütfen devam etmek için giriş yapın veya kayıt olun. Yeni kayıtlar admin onayından sonra aktifleşir.</p>
-        
-        <div class="form-group">
-            <label>E-posta Adresi</label>
-            <input type="email" id="emailInput" placeholder="ornek@mail.com">
+    <div class="container">
+        <div class="header">
+            <h2>YDS Platformu</h2>
+            <button class="theme-toggle" onclick="toggleTheme()">Koyu Tema Yap</button>
         </div>
-        <div class="form-group">
-            <label>Şifre</label>
-            <input type="password" id="passwordInput" placeholder="Şifreniz">
-        </div>
-        
-        <div style="display: flex; gap: 10px; margin-top: 20px;">
-            <button class="btn" style="flex: 1;" onclick="loginBtnClick()">Giriş Yap</button>
-            <button class="btn" style="flex: 1; background-color: #6c757d;" onclick="registerBtnClick()">Kayıt Ol</button>
-        </div>
-        <div id="authError" style="color: var(--wrong-text); margin-top: 15px; text-align: center; font-weight: bold;"></div>
-    </div>
 
-    <div id="menuScreen" class="menu" style="display: none;">
-        <p>Giriş başarılı! Lütfen çalışma modunuzu seçin:</p>
-        <button class="btn" onclick="startSession('exam')">Gerçek Sınav Modu (80 Soru, 180 Dk)</button>
-        <button class="btn" onclick="startSession('practice')">Serbest Çalışma Modu (Anında Analiz)</button>
-        <button class="btn" style="background-color: #dc3545; margin-top: 20px;" onclick="logout()">Çıkış Yap</button>
-    </div>
-
-    <div id="quizScreen" class="quiz-area" style="display: none;">
-        
-    <div id="menuScreen" class="menu">
-        <p>Lütfen çalışma modunuzu seçin:</p>
-        <button class="btn" onclick="startSession('exam')">Gerçek Sınav Modu (80 Soru, 180 Dk)</button>
-        <button class="btn" onclick="startSession('practice')">Serbest Çalışma Modu (Anında Analiz)</button>
-    </div>
-
-    <div id="quizScreen" class="quiz-area">
-        <div id="timerDisplay" class="timer-bar">00:00</div>
-        <div id="questionCounter" style="margin-bottom: 10px; color: gray;">Soru 1 / 80</div>
-        
-        <div id="questionText" class="question-text">Soru metni buraya gelecek...</div>
-        
-        <div id="optionsContainer" class="options">
+        <div id="authScreen" class="auth-area" style="display: block;">
+            <h3 style="text-align: center;">Sisteme Giriş</h3>
+            <p style="text-align: center; color: gray;">Devam etmek için giriş yapın veya kayıt olun.</p>
+            
+            <div class="form-group">
+                <label>E-posta Adresi</label>
+                <input type="email" id="emailInput" placeholder="ornek@mail.com">
             </div>
-
-        <div id="explanationBox" class="explanation-box">
-            <strong>Açıklama:</strong> <span id="explanationText"></span>
+            <div class="form-group">
+                <label>Şifre (En az 6 karakter)</label>
+                <input type="password" id="passwordInput" placeholder="Şifreniz">
+            </div>
+            
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+                <button class="btn" style="flex: 1;" onclick="loginBtnClick()">Giriş Yap</button>
+                <button class="btn" style="flex: 1; background-color: #6c757d;" onclick="registerBtnClick()">Kayıt Ol</button>
+            </div>
+            <div id="authError" style="color: red; margin-top: 15px; text-align: center; font-weight: bold;"></div>
         </div>
 
-        <div class="nav-buttons">
-            <button class="btn" onclick="prevQuestion()" id="btnPrev">Geri</button>
-            <button class="btn" onclick="finishSession()" id="btnFinish" style="background-color: #e53935;">Sınavı Bitir</button>
-            <button class="btn" onclick="nextQuestion()" id="btnNext">İleri</button>
+        <div id="menuScreen" class="menu" style="display: none;">
+            <p>Giriş başarılı! Lütfen çalışma modunuzu seçin:</p>
+            <button class="btn" onclick="startSession('exam')">Gerçek Sınav Modu (80 Soru, 180 Dk)</button>
+            <button class="btn" onclick="startSession('practice')">Serbest Çalışma Modu (Anında Analiz)</button>
+            <button class="btn" style="background-color: #dc3545; margin-top: 20px;" onclick="logout()">Çıkış Yap</button>
+        </div>
+
+        <div id="quizScreen" class="quiz-area" style="display: none;">
+            <div id="timerDisplay" class="timer-bar">00:00</div>
+            <div id="questionCounter" style="margin-bottom: 10px; color: gray;">Soru 1 / 80</div>
+            <div id="questionText" class="question-text">Soru metni buraya gelecek...</div>
+            <div id="optionsContainer" class="options"></div>
+            <div id="explanationBox" class="explanation-box">
+                <strong>Açıklama:</strong> <span id="explanationText"></span>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn" onclick="prevQuestion()" id="btnPrev">Geri</button>
+                <button class="btn" onclick="finishSession()" id="btnFinish" style="background-color: #e53935;">Sınavı Bitir</button>
+                <button class="btn" onclick="nextQuestion()" id="btnNext">İleri</button>
+            </div>
+        </div>
+
+        <div id="resultScreen" class="result-area" style="display: none;">
+            <h3>Sınav Bitti</h3>
+            <button class="btn" style="width: 100%;" onclick="location.reload()">Ana Menüye Dön</button>
         </div>
     </div>
 
-    <div id="resultScreen" class="result-area">
-        <h3>Sınav Sonucu</h3>
-        <div class="stat-box">
-            <p><strong>Doğru:</strong> <span id="resCorrect"></span></p>
-            <p><strong>Yanlış:</strong> <span id="resWrong"></span></p>
-            <p><strong>Boş:</strong> <span id="resEmpty"></span></p>
-            <p><strong>Harcanan Süre:</strong> <span id="resTime"></span></p>
-        </div>
-        
-        <div class="stat-box" id="weakGrammarBox">
-            <h4>Hata Yapılan Gramer Konuları</h4>
-            <ul id="weakGrammarList"></ul>
-        </div>
-
-        <div class="stat-box" id="wrongVocabBox">
-            <h4>Tekrar Edilmesi Gereken Kelimeler / Kalıplar</h4>
-            <ul id="wrongVocabList"></ul>
-        </div>
-        
-        <button class="btn" style="width: 100%;" onclick="location.reload()">Ana Menüye Dön</button>
-    </div>
-</div>
-
-<script src="data.js"></script>
-<script src="script.js"></script>
+    <script type="module" src="auth.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
