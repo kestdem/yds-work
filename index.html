@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YDS Prep - Secure Exam Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>YDS Prep Portal</h1>
+        <div class="header-controls">
+            <button id="theme-toggle">Toggle Dark Mode</button>
+            <span id="user-greeting" class="hidden"></span>
+            <button id="logout-btn" class="hidden">Log Out</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="auth-section">
+            <h2>Login / Register</h2>
+            <div id="auth-error" class="error-box hidden"></div>
+            <form id="auth-form">
+                <input type="email" id="email" placeholder="Email Address" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <div class="auth-buttons">
+                    <button type="submit" id="login-btn">Log In</button>
+                    <button type="button" id="register-btn">Register</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="dashboard-section" class="hidden">
+            <h2>User Dashboard</h2>
+            <div id="admin-controls" class="hidden">
+                <button id="show-admin-panel-btn" class="admin-btn">Open Admin Panel</button>
+            </div>
+            <div class="exam-setup">
+                <h3>Start Exam</h3>
+                <label for="exam-mode">Select Mode:</label>
+                <select id="exam-mode">
+                    <option value="practice">Practice Mode (Instant Feedback & Explanations)</option>
+                    <option value="real">Real Exam Mode (80 Qs, 180 Mins)</option>
+                </select>
+                <button id="start-exam-btn" class="primary-btn">Start Session</button>
+            </div>
+        </section>
+
+        <section id="admin-panel-section" class="hidden">
+            <h2>Admin Panel</h2>
+            <button id="close-admin-panel-btn">Back to Dashboard</button>
+            <div class="table-responsive">
+                <table id="users-table">
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users-tbody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="exam-active-section" class="hidden">
+            <div class="exam-header">
+                <h3 id="mode-title"></h3>
+                <div id="timer" class="timer">00:00</div>
+            </div>
+            <div id="question-container" class="question-box">
+                <div id="question-progress"></div>
+                <p id="question-text"></p>
+                <div id="options-container"></div>
+                
+                <div id="explanation-box" class="hidden">
+                    <h4>Explanation & Translation</h4>
+                    <p><strong>Text (TR):</strong> <span id="exp-text-tr"></span></p>
+                    <ul id="exp-options-tr"></ul>
+                    <p><strong>Grammar/Vocab Note:</strong> <span id="exp-detail"></span></p>
+                </div>
+            </div>
+            <div class="exam-controls">
+                <button id="next-btn" class="hidden">Next Question</button>
+                <button id="finish-btn" class="danger-btn hidden">Finish Exam</button>
+            </div>
+        </section>
+
+        <section id="results-section" class="hidden">
+            <h2>Exam Results</h2>
+            <div id="score-summary" class="summary-cards"></div>
+            <div class="analytics-box">
+                <h3>Grammar Topics to Review</h3>
+                <ul id="grammar-review-list"></ul>
+            </div>
+            <div class="analytics-box">
+                <h3>Vocabulary to Review</h3>
+                <ul id="vocab-review-list"></ul>
+            </div>
+            <button id="back-dashboard-btn" class="primary-btn">Back to Dashboard</button>
+        </section>
+    </main>
+
+    <script type="module" src="auth.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+</html>
