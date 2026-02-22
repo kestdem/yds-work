@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YDS Çıkmış Sorular - Sınav Platformu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h2>YDS Platformu</h2>
+        <button class="theme-toggle" onclick="toggleTheme()">Koyu Tema Yap</button>
+    </div>
+
+    <div id="menuScreen" class="menu">
+        <p>Lütfen çalışma modunuzu seçin:</p>
+        <button class="btn" onclick="startSession('exam')">Gerçek Sınav Modu (80 Soru, 180 Dk)</button>
+        <button class="btn" onclick="startSession('practice')">Serbest Çalışma Modu (Anında Analiz)</button>
+    </div>
+
+    <div id="quizScreen" class="quiz-area">
+        <div id="timerDisplay" class="timer-bar">00:00</div>
+        <div id="questionCounter" style="margin-bottom: 10px; color: gray;">Soru 1 / 80</div>
+        
+        <div id="questionText" class="question-text">Soru metni buraya gelecek...</div>
+        
+        <div id="optionsContainer" class="options">
+            </div>
+
+        <div id="explanationBox" class="explanation-box">
+            <strong>Açıklama:</strong> <span id="explanationText"></span>
+        </div>
+
+        <div class="nav-buttons">
+            <button class="btn" onclick="prevQuestion()" id="btnPrev">Geri</button>
+            <button class="btn" onclick="finishSession()" id="btnFinish" style="background-color: #e53935;">Sınavı Bitir</button>
+            <button class="btn" onclick="nextQuestion()" id="btnNext">İleri</button>
+        </div>
+    </div>
+
+    <div id="resultScreen" class="result-area">
+        <h3>Sınav Sonucu</h3>
+        <div class="stat-box">
+            <p><strong>Doğru:</strong> <span id="resCorrect"></span></p>
+            <p><strong>Yanlış:</strong> <span id="resWrong"></span></p>
+            <p><strong>Boş:</strong> <span id="resEmpty"></span></p>
+            <p><strong>Harcanan Süre:</strong> <span id="resTime"></span></p>
+        </div>
+        
+        <div class="stat-box" id="weakGrammarBox">
+            <h4>Hata Yapılan Gramer Konuları</h4>
+            <ul id="weakGrammarList"></ul>
+        </div>
+
+        <div class="stat-box" id="wrongVocabBox">
+            <h4>Tekrar Edilmesi Gereken Kelimeler / Kalıplar</h4>
+            <ul id="wrongVocabList"></ul>
+        </div>
+        
+        <button class="btn" style="width: 100%;" onclick="location.reload()">Ana Menüye Dön</button>
+    </div>
+</div>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
