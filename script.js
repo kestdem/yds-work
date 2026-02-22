@@ -22,6 +22,7 @@ function startSession(mode) {
     document.getElementById('menuScreen').style.display = 'none';
     document.getElementById('quizScreen').style.display = 'block';
 
+    // questionPool dizisinin data.js dosyasından geldiği varsayılıyor
     let questionCount = mode === 'exam' ? 80 : questionPool.length; 
     let shuffled = [...questionPool].sort(() => 0.5 - Math.random());
     activeQuestions = shuffled.slice(0, questionCount);
@@ -30,9 +31,9 @@ function startSession(mode) {
     userAnswers = {};
     
     if (mode === 'exam') {
-        timeSeconds = 180 * 60; // Sınav modu: 180 dk geri sayım
+        timeSeconds = 180 * 60; 
     } else {
-        timeSeconds = 0; // Çalışma modu: İleri doğru sayım
+        timeSeconds = 0; 
     }
     
     startTimer();
@@ -173,59 +174,3 @@ function finishSession() {
     } else { vList.innerHTML = "<li>Mükemmel! Kelime eksiğiniz çıkmadı.</li>"; }
 }
 
-async function loginBtnClick() {
-    const email = document.getElementById('emailInput').value;
-    const pass = document.getElementById('passwordInput').value;
-    const errBox = document.getElementById('authError');
-    
-    if(!email || !pass) {
-        errBox.innerText = "Lütfen e-posta ve şifre girin.";
-        return;
-    }
-
-    errBox.innerText = "Giriş yapılıyor, lütfen bekleyin...";
-    
-    try {
-        // Firebase giriş fonksiyonunu çağır (Önceki adımdaki loginUser fonksiyonu)
-        // Başarılı olursa true döndürdüğünü veya hata fırlatmadığını varsayıyoruz
-        await loginUser(email, pass); 
-        
-        // GİRİŞ BAŞARILIYSA EKRANLARI DEĞİŞTİR:
-        document.getElementById('authScreen').style.display = 'none';
-        document.getElementById('menuScreen').style.display = 'flex';
-        
-    } catch (error) {
-        errBox.innerText = error.message || "Giriş başarısız! Yetkiniz olmayabilir.";
-    }
-}
-
-async function registerBtnClick() {
-    const email = document.getElementById('emailInput').value;
-    const pass = document.getElementById('passwordInput').value;
-    const errBox = document.getElementById('authError');
-    
-    if(!email || !pass) {
-        errBox.innerText = "Lütfen e-posta ve şifre girin.";
-        return;
-    }
-
-    errBox.innerText = "Kayıt yapılıyor...";
-    
-    try {
-        await registerUser(email, pass);
-        errBox.innerText = "Kayıt başarılı! Admin onayından sonra giriş yapabilirsiniz.";
-        errBox.style.color = "green";
-    } catch (error) {
-        errBox.innerText = "Kayıt hatası!";
-    }
-}
-// Bu satırlar HTML'deki onclick="" kısımlarının fonksiyonları bulmasını sağlar
-window.loginBtnClick = loginBtnClick;
-window.registerBtnClick = registerBtnClick;
-window.logout = logout;
-
-
-function logout() {
-    // Sayfayı yenileyerek (veya Firebase signOut çağırarak) çıkış yap
-    location.reload(); 
-}
