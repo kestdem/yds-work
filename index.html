@@ -13,7 +13,41 @@
         <h2>YDS Platformu</h2>
         <button class="theme-toggle" onclick="toggleTheme()">Koyu Tema Yap</button>
     </div>
+<div class="container">
+    <div class="header">
+        <h2>YDS Platformu</h2>
+        <button class="theme-toggle" onclick="toggleTheme()">Koyu Tema Yap</button>
+    </div>
 
+    <div id="authScreen" class="auth-area">
+        <h3 style="text-align: center;">Sisteme Giriş</h3>
+        <p style="text-align: center; color: gray;">Lütfen devam etmek için giriş yapın veya kayıt olun. Yeni kayıtlar admin onayından sonra aktifleşir.</p>
+        
+        <div class="form-group">
+            <label>E-posta Adresi</label>
+            <input type="email" id="emailInput" placeholder="ornek@mail.com">
+        </div>
+        <div class="form-group">
+            <label>Şifre</label>
+            <input type="password" id="passwordInput" placeholder="Şifreniz">
+        </div>
+        
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+            <button class="btn" style="flex: 1;" onclick="loginBtnClick()">Giriş Yap</button>
+            <button class="btn" style="flex: 1; background-color: #6c757d;" onclick="registerBtnClick()">Kayıt Ol</button>
+        </div>
+        <div id="authError" style="color: var(--wrong-text); margin-top: 15px; text-align: center; font-weight: bold;"></div>
+    </div>
+
+    <div id="menuScreen" class="menu" style="display: none;">
+        <p>Giriş başarılı! Lütfen çalışma modunuzu seçin:</p>
+        <button class="btn" onclick="startSession('exam')">Gerçek Sınav Modu (80 Soru, 180 Dk)</button>
+        <button class="btn" onclick="startSession('practice')">Serbest Çalışma Modu (Anında Analiz)</button>
+        <button class="btn" style="background-color: #dc3545; margin-top: 20px;" onclick="logout()">Çıkış Yap</button>
+    </div>
+
+    <div id="quizScreen" class="quiz-area" style="display: none;">
+        
     <div id="menuScreen" class="menu">
         <p>Lütfen çalışma modunuzu seçin:</p>
         <button class="btn" onclick="startSession('exam')">Gerçek Sınav Modu (80 Soru, 180 Dk)</button>
