@@ -173,3 +173,54 @@ function finishSession() {
     } else { vList.innerHTML = "<li>Mükemmel! Kelime eksiğiniz çıkmadı.</li>"; }
 }
 
+async function loginBtnClick() {
+    const email = document.getElementById('emailInput').value;
+    const pass = document.getElementById('passwordInput').value;
+    const errBox = document.getElementById('authError');
+    
+    if(!email || !pass) {
+        errBox.innerText = "Lütfen e-posta ve şifre girin.";
+        return;
+    }
+
+    errBox.innerText = "Giriş yapılıyor, lütfen bekleyin...";
+    
+    try {
+        // Firebase giriş fonksiyonunu çağır (Önceki adımdaki loginUser fonksiyonu)
+        // Başarılı olursa true döndürdüğünü veya hata fırlatmadığını varsayıyoruz
+        await loginUser(email, pass); 
+        
+        // GİRİŞ BAŞARILIYSA EKRANLARI DEĞİŞTİR:
+        document.getElementById('authScreen').style.display = 'none';
+        document.getElementById('menuScreen').style.display = 'flex';
+        
+    } catch (error) {
+        errBox.innerText = error.message || "Giriş başarısız! Yetkiniz olmayabilir.";
+    }
+}
+
+async function registerBtnClick() {
+    const email = document.getElementById('emailInput').value;
+    const pass = document.getElementById('passwordInput').value;
+    const errBox = document.getElementById('authError');
+    
+    if(!email || !pass) {
+        errBox.innerText = "Lütfen e-posta ve şifre girin.";
+        return;
+    }
+
+    errBox.innerText = "Kayıt yapılıyor...";
+    
+    try {
+        await registerUser(email, pass);
+        errBox.innerText = "Kayıt başarılı! Admin onayından sonra giriş yapabilirsiniz.";
+        errBox.style.color = "green";
+    } catch (error) {
+        errBox.innerText = "Kayıt hatası!";
+    }
+}
+
+function logout() {
+    // Sayfayı yenileyerek (veya Firebase signOut çağırarak) çıkış yap
+    location.reload(); 
+}
