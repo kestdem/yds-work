@@ -56,13 +56,31 @@
         </div>
 
         <div id="resultScreen" class="result-area" style="display: none;">
-            <h3>Sınav Bitti</h3>
+            <h3>Sınav Sonucu</h3>
+            <div class="stat-box">
+                <p><strong>Doğru:</strong> <span id="resCorrect"></span></p>
+                <p><strong>Yanlış:</strong> <span id="resWrong"></span></p>
+                <p><strong>Boş:</strong> <span id="resEmpty"></span></p>
+                <p><strong>Harcanan Süre:</strong> <span id="resTime"></span></p>
+            </div>
+            
+            <div class="stat-box" id="weakGrammarBox">
+                <h4>Hata Yapılan Gramer Konuları</h4>
+                <ul id="weakGrammarList"></ul>
+            </div>
+
+            <div class="stat-box" id="wrongVocabBox">
+                <h4>Tekrar Edilmesi Gereken Kelimeler</h4>
+                <ul id="wrongVocabList"></ul>
+            </div>
             <button class="btn" style="width: 100%;" onclick="location.reload()">Ana Menüye Dön</button>
         </div>
     </div>
 
+    <script src="data.js"></script>
+    
     <script type="module" src="auth.js"></script>
+    
     <script src="script.js"></script>
 </body>
-
 </html>
