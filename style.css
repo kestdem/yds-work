@@ -25,7 +25,6 @@
     --explanation-bg: #3e2723;
 }
 
-/* --- GENEL STİLLER --- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bg-color);
@@ -47,7 +46,6 @@ body {
     position: relative;
 }
 
-/* --- HEADER & TEMA --- */
 .header {
     display: flex;
     justify-content: space-between;
@@ -67,9 +65,8 @@ body {
     font-weight: bold;
 }
 
-/* --- GİRİŞ EKRANI STİLLERİ --- */
 .auth-area {
-    display: block; /* Başlangıçta görünür */
+    display: block; 
     max-width: 400px;
     margin: 0 auto;
 }
@@ -101,7 +98,6 @@ body {
     box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
 }
 
-/* --- MENÜ --- */
 .menu { display: flex; flex-direction: column; gap: 15px; text-align: center; }
 .btn {
     background-color: var(--primary-color);
@@ -115,7 +111,6 @@ body {
 }
 .btn:hover { background-color: var(--primary-hover); }
 
-/* --- SINAV ALANI --- */
 .quiz-area, .result-area { display: none; }
 .timer-bar { font-size: 18px; font-weight: bold; margin-bottom: 20px; text-align: right; }
 .question-text { font-size: 18px; line-height: 1.6; margin-bottom: 20px; font-weight: 500; }
@@ -148,7 +143,6 @@ body {
 
 .nav-buttons { display: flex; justify-content: space-between; margin-top: 20px; }
 
-/* --- İSTATİSTİKLER --- */
 .stat-box { border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; margin-bottom: 15px; }
 ul { padding-left: 20px; margin: 5px 0; }
 
