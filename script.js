@@ -219,6 +219,11 @@ async function registerBtnClick() {
         errBox.innerText = "Kayıt hatası!";
     }
 }
+// Bu satırlar HTML'deki onclick="" kısımlarının fonksiyonları bulmasını sağlar
+window.loginBtnClick = loginBtnClick;
+window.registerBtnClick = registerBtnClick;
+window.logout = logout;
+
 
 function logout() {
     // Sayfayı yenileyerek (veya Firebase signOut çağırarak) çıkış yap
