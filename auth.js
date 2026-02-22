@@ -75,3 +75,8 @@ export async function registerUser(email, password) {
         alert("Kayıt hatası: " + error.message);
     }
 }
+// Bu satırlar HTML'deki onclick="" kısımlarının fonksiyonları bulmasını sağlar
+window.loginBtnClick = loginBtnClick;
+window.registerBtnClick = registerBtnClick;
+window.logout = logout;
+
