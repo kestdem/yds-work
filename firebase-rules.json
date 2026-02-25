@@ -1,0 +1,107 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "users": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('users').child(auth.uid).child('isAdmin').val() === true)",
+        ".write": "(auth != null && auth.uid === $uid && !data.exists()) || (auth != null && root.child('users').child(auth.uid).child('isAdmin').val() === true)",
+
+        "email": {
+          ".validate": "newData.isString() && newData.val().matches(/^[^@]+@[^@]+$/)"
+        },
+        "isApproved": {
+          ".validate": "newData.isBoolean()"
+        },
+        "isAdmin": {
+          ".validate": "newData.isBoolean()"
+        },
+
+        "$other": {
+          ".validate": "false"
+        }
+      }
+    },
+
+    "questions": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('isApproved').val() === true",
+      ".write": "auth != null && root.child('users').child(auth.uid).child('isAdmin').val() === true",
+
+      "$qid": {
+        "id": {
+          ".validate": "newData.isString()"
+        },
+        "questionText": {
+          ".validate": "newData.isString()"
+        },
+        "questionTextTR": {
+          ".validate": "newData.isString()"
+        },
+        "paragraph": {
+          ".validate": "newData.isString() || newData.val() === ''"
+        },
+        "options": {
+          ".validate": "newData.hasChildren(['A', 'B', 'C', 'D', 'E'])"
+        },
+        "optionsTR": {
+          ".validate": "newData.hasChildren(['A', 'B', 'C', 'D', 'E'])"
+        },
+        "correctAnswer": {
+          ".validate": "newData.val() === 'A' || newData.val() === 'B' || newData.val() === 'C' || newData.val() === 'D' || newData.val() === 'E'"
+        },
+        "category": {
+          ".validate": "newData.isString()"
+        },
+        "subCategory": {
+          ".validate": "newData.isString()"
+        },
+        "difficulty": {
+          ".validate": "newData.isString()"
+        },
+        "explanationEN": {
+          ".validate": "newData.isString()"
+        },
+        "explanationTR": {
+          ".validate": "newData.isString()"
+        },
+        "targetWord": {
+          ".validate": "newData.isString()"
+        },
+        "grammarTopic": {
+          ".validate": "newData.isString()"
+        },
+        "$other": {
+          ".validate": "false"
+        }
+      }
+    },
+
+    "logs": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('isAdmin').val() === true",
+      ".write": "auth != null && root.child('users').child(auth.uid).child('isAdmin').val() === true",
+
+      "$logId": {
+        "timestamp": {
+          ".validate": "newData.isNumber()"
+        },
+        "adminUid": {
+          ".validate": "newData.isString()"
+        },
+        "adminEmail": {
+          ".validate": "newData.isString()"
+        },
+        "action": {
+          ".validate": "newData.isString()"
+        },
+        "details": {
+          ".validate": "newData.isObject()"
+        },
+        "$other": {
+          ".validate": "false"
+        }
+      }
+    }
+  }
+}
+
